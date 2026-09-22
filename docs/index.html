@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="IMPRINT enriches text queries with web-retrieved images for long-tail Object Goal Navigation.">
+  <title>IMPRINT — Image-Conditioned Query Enrichment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='2' fill='%23111111'/%3E%3Cpath d='M15 45V19h8l9 14 9-14h8v26h-8V31L32 44 23 31v14z' fill='white'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="wordmark" href="#top" aria-label="IMPRINT home">IMPRINT</a>
+    <div class="nav-links">
+      <a href="#method">Method</a>
+      <a href="#benchmark">Benchmark</a>
+      <a href="#results">Results</a>
+      <a href="#citation">Citation</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">IROS 2026 · Pittsburgh</p>
+        <h1><span>IMPRINT:</span> Image-Conditioned Query Enrichment for Long-Tail Object Goal Navigation</h1>
+        <p class="authors">Jelin Raphael Akkara<sup>1,2</sup>, Filippo Ziliotto<sup>1,2</sup>, Luciano Serafini<sup>2</sup>, Lamberto Ballan<sup>1</sup>, Tommaso Campari<sup>2</sup></p>
+        <p class="affiliations"><sup>1</sup>University of Padova &nbsp;·&nbsp; <sup>2</sup>Fondazione Bruno Kessler (FBK)</p>
+        <div class="actions" aria-label="Project links">
+          <a class="button primary" href="https://arxiv.org/abs/2607.25106" target="_blank" rel="noreferrer">Paper</a>
+          <a class="button" href="https://github.com/JelinR/IMPRINT" target="_blank" rel="noreferrer">Code</a>
+          <!-- Replace # with the final video URL and remove aria-disabled when ready. -->
+          <!-- <a class="button placeholder" href="#" aria-disabled="true" title="Add video URL">Video <small>soon</small></a> -->
+          <!-- Replace # with the final image/media URL and remove aria-disabled when ready. -->
+          <!-- <a class="button placeholder" href="#" aria-disabled="true" title="Add media URL">Media <small>soon</small></a> -->
+        </div>
+      </div>
+      <figure class="hero-figure">
+        <img src="assets/concept.png" alt="Comparison of text-only grounding with IMPRINT image-conditioned query enrichment">
+      </figure>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section intro" aria-labelledby="motivation-title">
+      <div>
+        <p class="section-kicker">Motivation</p>
+        <h2 id="motivation-title">Text alone is often not enough.</h2>
+      </div>
+      <div class="intro-copy">
+        <p>Semantic-map-based ObjectNav relies on text queries, which become unreliable for rare or semantically specific targets.</p>
+        <p><strong>IMPRINT</strong> enriches a target query with web-retrieved images, providing richer visual cues without retraining or modifying the navigation policy.</p>
+      </div>
+      <!-- Motivation video: add assets/motivation.mp4, then uncomment this block. -->
+      <div class="motivation-video">
+        <video controls playsinline preload="metadata" aria-label="IMPRINT motivation video">
+          <source src="assets/motivation.mp4" type="video/mp4">
+          Your browser does not support embedded video.
+          <a href="assets/motivation.mp4">Download the video</a>.
+        </video>
+      </div>
+     
+    </section>
+
+    <section class="section method" id="method" aria-labelledby="method-title">
+      <div class="section-heading">
+        <p class="section-kicker">Method</p>
+        <h2 id="method-title">A zero-shot, plug-and-play upgrade for queryable semantic maps</h2>
+        <p>IMPRINT enriches text queries with web-retrieved images to improve target grounding in existing navigation systems, without retraining the base policy.</p>
+      </div>
+      <div>
+        <p class="lead">The baseline pipeline comprises three stages: <strong>mapping</strong> projects visual features onto a 2D grid; <strong>map querying</strong> compares a text-query embedding with the stored features to produce a similarity map; and <strong>target localization</strong> selects the highest-scoring grid cell.</p>
+        <p class="lead">IMPRINT modifies only the map-querying stage. It retrieves visual examples of the target, encodes them with the baseline vision–language model, and aggregates their similarity maps to guide target localization. The four steps below describe this process.</p>
+      </div>
+      <figure class="wide-figure">
+        <img src="assets/pipeline.png" alt="IMPRINT mapping and image-conditioned map-querying pipeline">
+      </figure>
+      <div class="steps" aria-label="IMPRINT method steps">
+        <article><span>01</span><h3>Retrieve</h3><p>Retrieve <em>N</em> images from the web using the target text query.</p></article>
+        <article><span>02</span><h3>Encode</h3><p>Extract image embeddings using the baseline vision–language encoder.</p></article>
+        <article><span>03</span><h3>Match</h3><p>Compute cosine similarity between each image embedding and the map features to produce <em>N</em> similarity maps.</p></article>
+        <article><span>04</span><h3>Aggregate</h3><p>Combine the <em>N</em> similarity maps and select the highest-scoring grid cell as the predicted target location.</p></article>
+      </div>
+      <p class="method-note"><strong>Zero-shot and model-agnostic:</strong> IMPRINT requires no additional training and leaves the underlying navigation policy unchanged.</p>
+    </section>
+
+    <section class="section evaluation" aria-labelledby="evaluation-title">
+      <div class="section-heading compact">
+        <p class="section-kicker">Evaluation</p>
+        <h2 id="evaluation-title">Separating grounding from navigation</h2>
+      </div>
+      <div>
+        <p class="lead">We evaluate IMPRINT in two complementary settings: <strong>static phase</strong> measures target localization on a pre-built map, while <strong>online phase</strong> assesses performance within the complete navigation pipeline. Together, these settings distinguish improvements in spatial grounding from their impact on navigation success.</p>
+      </div>
+      <div class="phase-grid">
+        <article class="phase-card static-card">
+          <p class="phase-label">Static phase</p>
+          <h3>Isolated grounding</h3>
+          <p>We query a pre-built semantic map and compare the highest-scoring grid cell with the ground-truth target location, isolating grounding performance from navigation and detection.</p>
+          <div class="phase-flow" aria-label="Static phase flow"><span>Pre-built map</span><b>→</b><span>Query</span><b>→</b><span>Grid location</span></div>
+        </article>
+        <article class="phase-card online-card">
+          <p class="phase-label">Online phase</p>
+          <h3>End-to-end ObjectNav</h3>
+          <p>We evaluate the complete ObjectNav pipeline, with mapping, querying, detection, and navigation operating jointly throughout each episode to measure how grounding improvements translate into navigation success.</p>
+          <div class="phase-flow phase-flow-loop" aria-label="Online phase loop: Update map, Query, Navigate, then return to Update map"><span>Update map</span><b>→</b><span>Query</span><b>→</b><span>Navigate</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section benchmark" id="benchmark" aria-labelledby="benchmark-title">
+      <div class="benchmark-copy">
+        <p class="section-kicker">New benchmark</p>
+        <h2 id="benchmark-title">HSSD-rare</h2>
+        <p class="lead">A fine-grained ObjectNav benchmark built on HSSD-Hab that tests subcategory-level grounding within shared parent categories.</p>
+        <dl class="stats">
+          <div><dt>1,000</dt><dd>Episodes</dd></div>
+          <div><dt>17</dt><dd>HSSD scenes</dd></div>
+          <div><dt>20</dt><dd>Parent categories</dd></div>
+          <div><dt>559</dt><dd>Subcategories</dd></div>
+          <div><dt>992</dt><dd>Object instances</dd></div>
+          <div><dt>6.55 m</dt><dd>Mean start–goal distance</dd></div>
+        </dl>
+      </div>
+      <figure class="benchmark-categories">
+        <img src="assets/categories.png" alt="Examples of fine-grained chair, lamp, and drinkware categories in HSSD-rare" loading="lazy">
+        <figcaption><strong>(a) Fine-grained categories.</strong> Examples of subcategories within shared parent categories in HSSD-rare.</figcaption>
+      </figure>
+      <div class="benchmark-explanation">
+        <p class="lead"><strong>Why Viewpoints?</strong> HSSD provides object positions and dimensions but no category-specific viewpoints. Valid viewpoints are therefore required to generate ObjectNav episodes where the target is visible and reachable.</p>
+
+        <p class="lead"><strong>Viewpoint Generation:</strong> Accessible boundary points are identified around each target. Candidate viewpoints are then sampled radially in nearby traversable space and oriented toward the object.</p>
+
+        <p class="lead"><strong>Viewpoint Validation:</strong> The target’s 3D bounds are projected into each candidate view and checked against the depth image. Candidates are rejected if all sampled target points are occluded; otherwise, they are retained as valid viewpoints.</p>
+      </div>
+      <div class="benchmark-viewpoints">
+        <figure>
+          <img src="assets/viewpoints_pipeline.png" alt="Four map panels illustrating candidate viewpoint generation and filtering around a target object" loading="lazy">
+          <figcaption><strong>(b) Viewpoint generation pipeline.</strong> Generation and filtering of candidate viewpoints around a target object.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/viewpoints_validation.png" alt="Color and depth views showing visible and occluded target points for viewpoint validation" loading="lazy">
+          <figcaption><strong>(c) Viewpoint validation.</strong> Color and depth views illustrate target visibility checks at candidate viewpoints.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section results" id="results" aria-labelledby="results-title">
+      <div class="section-heading">
+        <p class="section-kicker">Results</p>
+        <h2 id="results-title">Better grounding, with detection as the bottleneck</h2>
+      </div>
+      <article class="result-block">
+        <div class="result-text">
+          <p class="result-number">01</p>
+          <h3>Static grounding</h3>
+          <p>Image-conditioned queries improve spatial grounding across both datasets and all evaluated encoders. Gains are especially pronounced for fine-grained HSSD-rare categories.</p>
+        </div>
+        <figure><img src="assets/static-results.png" alt="Static grounding success rate for text, image, and combined queries across BLIP2, SigLIP, and SED"></figure>
+      </article>
+      <article class="result-block reverse">
+        <div class="result-text">
+          <p class="result-number">02</p>
+          <h3>Online navigation</h3>
+          <p>Grounding gains transfer to navigation, but target detection limits their full impact. Enhanced detection unlocks substantially stronger performance.</p>
+        </div>
+        <figure><img src="assets/online-results.png" alt="Online ObjectNav success rate comparing Standard, IMPRINT, and IMPRINT with enhanced detection"></figure>
+      </article>
+      <aside class="takeaway"><strong>Takeaway:</strong> Image-conditioned queries consistently improve spatial grounding, but downstream detection limits gains in end-to-end navigation.</aside>
+    </section>
+
+    <section class="section citation" id="citation" aria-labelledby="citation-title">
+      <div>
+        <p class="section-kicker">Reference</p>
+        <h2 id="citation-title">Citation</h2>
+        <p>If you find IMPRINT or HSSD-rare useful, please cite our work.</p>
+      </div>
+      <div class="code-wrap">
+        <pre><code id="bibtex">@article{akkara2026imprint,
+  title   = {IMPRINT: Image-Conditioned Query Enrichment
+             for Long-Tail Object Goal Navigation},
+  author  = {Akkara, Jelin Raphael and Ziliotto, Filippo and
+             Serafini, Luciano and Ballan, Lamberto and Campari, Tommaso},
+  journal = {arXiv preprint arXiv:2607.25106},
+  year    = {2026}
+}</code></pre>
+        <button class="copy-button" type="button" data-copy="bibtex">Copy BibTeX</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>IMPRINT · IROS 2026</p>
+    <div><a href="https://arxiv.org/abs/2607.25106">Paper</a><a href="https://github.com/JelinR/IMPRINT">GitHub</a></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
