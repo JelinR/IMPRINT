@@ -34,10 +34,6 @@
         <div class="actions" aria-label="Project links">
           <a class="button primary" href="https://arxiv.org/abs/2607.25106" target="_blank" rel="noreferrer">Paper</a>
           <a class="button" href="https://github.com/JelinR/IMPRINT" target="_blank" rel="noreferrer">Code</a>
-          <!-- Replace # with the final video URL and remove aria-disabled when ready. -->
-          <!-- <a class="button placeholder" href="#" aria-disabled="true" title="Add video URL">Video <small>soon</small></a> -->
-          <!-- Replace # with the final image/media URL and remove aria-disabled when ready. -->
-          <!-- <a class="button placeholder" href="#" aria-disabled="true" title="Add media URL">Media <small>soon</small></a> -->
         </div>
       </div>
       <figure class="hero-figure">
@@ -56,9 +52,8 @@
         <p>Semantic-map-based ObjectNav relies on text queries, which become unreliable for rare or semantically specific targets.</p>
         <p><strong>IMPRINT</strong> enriches a target query with web-retrieved images, providing richer visual cues without retraining or modifying the navigation policy.</p>
       </div>
-      <!-- Motivation video: add assets/motivation.mp4, then uncomment this block. -->
       <div class="motivation-video">
-        <video controls playsinline preload="metadata" aria-label="IMPRINT motivation video">
+        <video controls muted playsinline preload="metadata" aria-label="IMPRINT motivation video" data-play-on-scroll>
           <source src="assets/motivation.mp4" type="video/mp4">
           Your browser does not support embedded video.
           <a href="assets/motivation.mp4">Download the video</a>.
