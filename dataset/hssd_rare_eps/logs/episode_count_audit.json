@@ -1,0 +1,27 @@
+{
+    "counts": {
+        "table": 50,
+        "chair": 50,
+        "couch": 50,
+        "bed": 50,
+        "treadmill": 50,
+        "counter": 50,
+        "potted_plant": 50,
+        "table_lamp": 50,
+        "trashcan": 50,
+        "vase": 50,
+        "coffee_maker": 50,
+        "teapot": 50,
+        "floor_lamp": 50,
+        "drinkware": 50,
+        "bottle": 50,
+        "shoes": 50,
+        "toiletry": 50,
+        "plush_toy": 50,
+        "alarm_clock": 50,
+        "clothing": 50
+    },
+    "total": 1000,
+    "deficits": {},
+    "complete": true
+}
