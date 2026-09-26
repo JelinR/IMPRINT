@@ -4,6 +4,8 @@ This directory contains the pipeline for generating HSSD rare-category ObjectNav
 The current entry point is `generate_hssd_rare_ref.py`; it uses
 `generate_viewpoints.py` to create object viewpoints.
 
+![HSSD rare category organization](../docs/assets/categories.png)
+
 ## Pipeline
 
 Run from the repository root in an environment with Habitat-Sim and the HSSD data:
@@ -45,6 +47,13 @@ The active episode generator. Important functions are:
 4. Orients accepted positions toward the object.
 
 Supporting methods include `boundary_around_obj()`, `view_pts_around()`, `is_a_viewpoint()`, and `face_object()`.
+
+<table>
+	<tr>
+		<td><img src="../docs/assets/viewpoints_pipeline.png" alt="Viewpoint generation pipeline"></td>
+		<td><img src="../docs/assets/viewpoints_validation.png" alt="Viewpoint validation"></td>
+	</tr>
+</table>
 
 ## Required Metadata
 
