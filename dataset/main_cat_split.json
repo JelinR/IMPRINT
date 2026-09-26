@@ -1,0 +1,98 @@
+{
+    "valid": {
+        "easy": [
+            "table",
+            "chair",
+            "couch",
+            "bed",
+            "treadmill",
+            "counter"
+        ],
+        "medium": [
+            "potted_plant",
+            "table_lamp",
+            "trashcan",
+            "vase",
+            "coffee_maker",
+            "teapot",
+            "floor_lamp"
+        ],
+        "hard": [
+            "drinkware",
+            "bottle",
+            "shoes",
+            "toiletry",
+            "plush_toy",
+            "alarm_clock",
+            "clothing"
+        ]
+    },
+    "ignored": {
+        "easy": [
+            "window",
+            "bathtub",
+            "washer_dryer",
+            "door",
+            "mirror",
+            "ceiling_lamp",
+            "tv",
+            "bench",
+            "fireplace",
+            "range_hood",
+            "dishwasher",
+            "carpet",
+            "exercise_bike",
+            "sink",
+            "oven",
+            "toilet",
+            "shower",
+            "fridge",
+            "wardrobe",
+            "shelves",
+            "car",
+            "cabinet"
+        ],
+        "medium": [
+            "picture",
+            "wall_lamp",
+            "curtain",
+            "wall_clock",
+            "bicycle",
+            "breadbin",
+            "mantel_clock",
+            "grandfather_clock",
+            "chest_of_drawers",
+            "stool",
+            "cushion",
+            "stand",
+            "filing_cabinet",
+            "microwave",
+            "kettle",
+            "blender",
+            "printer"
+        ],
+        "hard": [
+            "candle",
+            "flower",
+            "picture_frame",
+            "spicemill",
+            "earphone",
+            "pathway_light",
+            "colander",
+            "book",
+            "laptop",
+            "tray",
+            "toaster",
+            "plate",
+            "phone",
+            "soap_dispenser",
+            "pot",
+            "mobile_phone",
+            "bowl",
+            "camera",
+            "eyeglasses",
+            "pan",
+            "kitchen_scale"
+        ]
+    }
+}
