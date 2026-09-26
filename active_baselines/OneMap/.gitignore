@@ -1,0 +1,14 @@
+# ignore all .pngs
+*.png
+weights/*depth_camera_filtering/
+yolov7/
+MobileSAM/
+habitat-lab/
+results/
+saved_steps/
+traced_model.pt
+weights/
+depth_camera_filtering/
+ovon
+habitat-lab
+scripts/logs/

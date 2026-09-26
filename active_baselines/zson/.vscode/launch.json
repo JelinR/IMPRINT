@@ -1,0 +1,41 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "ZSON (HM3D)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "run.py",
+            "args": [
+                    "--exp-config", "configs/experiments/objectnav_mp3d.yaml",
+                    "--run-type", "eval",
+                    "TASK_CONFIG.TASK.SENSORS", "[\"OBJECTGOAL_PROMPT_SENSOR\"]",
+                    "TASK_CONFIG.TASK.MEASUREMENTS", "[\"DISTANCE_TO_GOAL\", \"SUCCESS\", \"SPL\", \"SOFT_SPL\", \"AGENT_ROTATION\", \"AGENT_POSITION\"]",
+                    "EVAL_CKPT_PATH_DIR", "data/checkpoints/zson_conf_B.pth",
+                    "EVAL.SPLIT", "val",
+                    "NUM_ENVIRONMENTS", "20",
+                    "TASK_CONFIG.DATASET.DATA_PATH", "data/datasets/hm3d/v1/{split}/{split}.json.gz",
+                    "RL.POLICY.pretrained_encoder", "data/models/omnidata_DINO_02.pth",
+                    "RL.REWARD_MEASURE", "distance_to_goal",
+                    "RL.POLICY.CLIP_MODEL", "RN50",
+                    "EVAL.episodes_eval_data", "True"
+                ]
+        },
+
+        {
+            "name": "ZSON : Eval Results",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "eval_logs.py",
+            "args": [
+                "--log_dir", "logs/eval",
+                "--data_content_dir", "data/datasets/hm3d/v1/val/content",
+            ]
+
+        }
+    ]
+}

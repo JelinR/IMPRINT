@@ -1,0 +1,43 @@
+EvalConf:
+  multi_object: false
+  max_steps: 500  #During active navigation
+  # max_steps: 5000 
+  max_dist: 1.0
+  is_gibson: False
+  #object_nav_path: "datasets/objectnav_hm3d_v1/val/content/"    #TODO: Dataset Path (in ObjectNav)
+  #scene_path: "datasets/scene_datasets/"                        #TODO: Scenes Path
+
+  #HM3D
+  # object_nav_path: "habitat-lab/data/datasets/objectnav/hm3d/v1/val/content/"
+  # scene_path: "habitat-lab/data/scene_datasets/"
+
+  #OVON
+  # object_nav_path: "habitat-lab/data/datasets/ovon/ovon_equal/val_seen_synonyms_equal/content"
+  # scene_path: "habitat-lab/data/scene_datasets/"
+
+  #HSSD
+  # is_hssd: False
+  # object_nav_path: "habitat-lab/data/datasets/objectnav/hssd/val/content/"
+  # scene_path: "habitat-lab/data/scene_datasets/hssd-hab/scenes/"
+
+  #HSSD-rare
+  is_hssd: True
+  object_nav_path: "habitat-lab/data/datasets/objectnav/hssd/val_rare/content/"
+  scene_path: "habitat-lab/data/scene_datasets/hssd-hab/scenes"
+
+  is_trial: False
+
+  log_rerun: False
+  use_pointnav: False
+  square_im: True
+
+  use_saved_steps: False      #NOTE: DON'T FORGET TO CHANGE max_steps
+  saved_steps_dir: "saved_steps/hssd"
+  results_dir: "junk"
+  run_split: 0      #Choices: [0, 1, 2]. If 0, loads all the episodes. If 1 or 2, loads half of the episodes as a split.
+
+config: [
+  ./controller_habitat.yaml, # Default Habitat Controller
+  ./mapping_conf_sim.yaml,       # Default Mapping Configuration
+  ./planning_conf.yaml       # Default Planning Configuration
+]
