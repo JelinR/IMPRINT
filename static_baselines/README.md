@@ -6,7 +6,7 @@ This directory evaluates static semantic-map grounding for IMPRINT. It does not 
 
 Download the precomputed static scene embeddings from the following temporary link:
 
-[Download static scene embeddings](??)
+[Download static scene embeddings](https://drive.google.com/file/d/1JFK-2MY2SW0RUOp3eBrmHG85dV_Ysi-I/view?usp=sharing)
 
 Extract the archive into `static_baselines/static_embeddings/`. This directory is passed directly to the evaluator as `embed_dir`. It must contain this structure:
 
